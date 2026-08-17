@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Go
+*.exe
+*.test
+*.out
+
+.vscode/
+.idea/
+.DS_Store
