@@ -10,7 +10,7 @@
 - [ ] 36. Valid Sudoku (Medium)
 
 ## Two Pointers
-- [x] 15. 3Sum (Medium) — 🟡 힌트, 재풀이 2026-08-25
+- [x] 15. 3Sum (Medium) — ❌ **해설 봄**, 재풀이 2026-08-21
 - [ ] 11. Container With Most Water (Medium)
 - [ ] 167. Two Sum II (Medium)
 
