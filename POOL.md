@@ -50,6 +50,6 @@
 - [ ] 567. Permutation in String (Medium)
 - [ ] 621. Task Scheduler (Medium)
 - [ ] 739. Daily Temperatures (Medium)
-- [ ] 875. Koko Eating Bananas (Medium) ← **진행 중**
+- [x] 875. Koko Eating Bananas (Medium) — ✅ Go 스스로 해결 / Python 미작성
 - [ ] 973. K Closest Points to Origin (Medium)
 - [ ] 994. Rotting Oranges (Medium)
