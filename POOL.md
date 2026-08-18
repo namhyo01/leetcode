@@ -26,7 +26,7 @@
 
 ## Binary Search
 - [ ] 74. Search a 2D Matrix (Medium)
-- [ ] 875. Koko Eating Bananas (Medium)
+- [ ] 875. Koko Eating Bananas (Medium) ← **진행 중**
 - [ ] 153. Find Minimum in Rotated Sorted Array (Medium)
 - [ ] 33. Search in Rotated Sorted Array (Medium)
 

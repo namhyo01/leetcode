@@ -7,6 +7,7 @@ Python + Go 병행 풀이. 유형별 랜덤 출제 → 직접 풀이 → 리뷰 
 | # | 문제 | 난이도 | 유형 | Python | Go | 재풀이 |
 |---|------|--------|------|--------|-----|--------|
 | 15 | [3Sum](problems/0015-3sum) | Medium | Two Pointers | ❌ | ❌ | **2026-08-21** |
+| 875 | [Koko Eating Bananas](problems/0875-koko-eating-bananas) | Medium | Binary Search | ⬜ | ⬜ | - |
 
 > ⬜ 미착수 / ❌ 해설 보고 이해 / 🟡 힌트 받고 해결 / ✅ 스스로 해결
 >
@@ -15,11 +16,16 @@ Python + Go 병행 풀이. 유형별 랜덤 출제 → 직접 풀이 → 리뷰 
 ## 실행 방법
 
 ```bash
+DIR=problems/0875-koko-eating-bananas   # 오늘 문제
+
 # Python
-python3 problems/0015-3sum/solution_test.py
+python3 $DIR/solution.py         # main 놀이터 (출력 찍어보기)
+python3 $DIR/solution_test.py    # 전체 검증
 
 # Go
-go test ./problems/0015-3sum/
+go run  ./$DIR/                  # main() 놀이터
+go test ./$DIR/                  # 전체 검증
+go test -v ./$DIR/               # 케이스별 상세
 ```
 
 ## 디렉토리 규칙
