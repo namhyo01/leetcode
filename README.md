@@ -7,9 +7,11 @@ Python + Go 병행 풀이. 유형별 랜덤 출제 → 직접 풀이 → 리뷰 
 | # | 문제 | 난이도 | 유형 | Python | Go | 재풀이 |
 |---|------|--------|------|--------|-----|--------|
 | 15 | [3Sum](problems/0015-3sum) | Medium | Two Pointers | ❌ | ❌ | **2026-08-21** |
-| 875 | [Koko Eating Bananas](problems/0875-koko-eating-bananas) | Medium | Binary Search | ⬜ | ⬜ | - |
+| 875 | [Koko Eating Bananas](problems/0875-koko-eating-bananas) | Medium | ❓ | ⬜ | ⬜ | - |
 
 > ⬜ 미착수 / ❌ 해설 보고 이해 / 🟡 힌트 받고 해결 / ✅ 스스로 해결
+>
+> 유형(❓)은 **푼 뒤에** 채운다. 미리 알면 스스로 판별하는 훈련이 안 된다.
 >
 > ❌는 재풀이 1순위. 3일 뒤 아무것도 안 보고 다시 친다.
 
