@@ -50,3 +50,19 @@ problems/<번호4자리>-<슬러그>/
 5. 힌트를 받아 푼 문제(🟡)는 **1주 뒤 재풀이**한다.
 
 [문제 풀 목록](POOL.md)
+
+## 다른 컴퓨터에서 이어서 하기
+
+이 저장소는 **Claude Code 설정을 저장소 안에 담고 있어서**, clone만 하면 어디서든 똑같이 동작한다.
+
+```bash
+git clone https://github.com/namhyo01/leetcode
+cd leetcode
+claude
+```
+
+- `CLAUDE.md` — 코치 지침 (자동으로 읽힌다)
+- `.claude/commands/today.md` — `/today` : 오늘의 문제 출제
+- `.claude/commands/done.md` — `/done` : 검증·리뷰·기록·푸시
+
+새 컴퓨터에서 필요한 준비물은 Claude Code 로그인, `gh auth login`(푸시용), Python 3와 Go뿐이다.
