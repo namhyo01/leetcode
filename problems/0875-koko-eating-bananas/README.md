@@ -1,45 +1,55 @@
 # 875. Koko Eating Bananas
 
-- 난이도: **Medium**
-- 링크: https://leetcode.com/problems/koko-eating-bananas/
+- Difficulty: **Medium**
+- Link: https://leetcode.com/problems/koko-eating-bananas/
 
-## 문제
+## Problem
 
-코코는 바나나를 좋아한다. `n`개의 바나나 더미가 있고, `piles[i]`는 `i`번째 더미의 바나나 개수다.
-경비원이 `h`시간 뒤에 돌아온다.
+Koko loves to eat bananas. There are `n` piles of bananas, the `i`th pile has
+`piles[i]` bananas. The guards have gone and will come back in `h` hours.
 
-코코는 시간당 먹는 속도 `k`(정수)를 정한다. **매 시간마다 더미 하나를 골라 `k`개를 먹는다.**
-더미에 `k`개보다 적게 남아 있으면 남은 걸 다 먹고, **그 시간에는 더 먹지 않는다.**
-(= 더미 하나를 여러 시간에 걸쳐 먹을 수는 있어도, 한 시간에 두 더미를 건드릴 수는 없다)
+Koko can decide her bananas-per-hour eating speed of `k`. Each hour, she chooses
+some pile of bananas and eats `k` bananas from that pile. If the pile has less
+than `k` bananas, she eats all of them instead and will not eat any more bananas
+during this hour.
 
-경비원이 돌아오기 전에 모든 바나나를 다 먹을 수 있는 **최소 정수 속도 `k`** 를 반환하라.
+Koko likes to eat slowly but still wants to finish eating all the bananas before
+the guards return.
 
-## 제약 조건
+Return **the minimum integer `k` such that she can eat all the bananas within `h` hours**.
 
-- `1 <= piles.length <= 10^4`
-- `piles.length <= h <= 10^9`
-- `1 <= piles[i] <= 10^9`
-
-## 예제
+## Examples
 
 ```
-입력: piles = [3,6,7,11], h = 8
-출력: 4
+Example 1:
+Input:  piles = [3,6,7,11], h = 8
+Output: 4
 
-입력: piles = [30,11,23,4,20], h = 5
-출력: 30
+Example 2:
+Input:  piles = [30,11,23,4,20], h = 5
+Output: 30
 
-입력: piles = [30,11,23,4,20], h = 6
-출력: 23
+Example 3:
+Input:  piles = [30,11,23,4,20], h = 6
+Output: 23
 ```
 
-## 스스로 체크할 것
+## Constraints
 
-- [ ] 가능한 `k` 값의 범위는 어디부터 어디까지인가?
-- [ ] 속도 `k`가 주어졌을 때 **총 몇 시간 걸리는지** 계산하는 식은? (`ceil` 주의)
-- [ ] 무식하게 풀면 복잡도가 얼마인가? 제약조건을 보면 통과하나?
-- [ ] 시간 합이 오버플로 날 수 있나? (`k=1`, `n=10^4`, `piles[i]=10^9`이면?)
-- [ ] 내 풀이의 시간/공간 복잡도는?
+```
+1 <= piles.length <= 10^4
+piles.length <= h <= 10^9
+1 <= piles[i] <= 10^9
+```
+
+## Questions to sit with
+
+- [ ] What is the range of possible values for `k` — lowest and highest?
+- [ ] Given a speed `k`, how do you compute the total hours needed? (watch the `ceil`)
+- [ ] If you tried every possible `k`, what would the complexity be? Does it pass
+      the constraints above?
+- [ ] Can the hour total overflow? (`k=1`, `n=10^4`, `piles[i]=10^9`)
+- [ ] What is the time/space complexity of your solution?
 
 ## 내 접근 (풀면서 채우기)
 
