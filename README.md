@@ -8,7 +8,7 @@ Python + Go 병행 풀이. 유형별 랜덤 출제 → 직접 풀이 → 리뷰 
 |---|------|--------|------|--------|-----|--------|
 | 15 | [3Sum](problems/0015-3sum) | Medium | Two Pointers | ❌ | ❌ | **2026-08-21** |
 | 875 | [Koko Eating Bananas](problems/0875-koko-eating-bananas) | Medium | Binary Search | ⬜ | ✅ | - |
-| 39 | [Combination Sum](problems/0039-combination-sum) | Medium | ❓ | ⬜ | ⬜ | - |
+| 39 | [Combination Sum](problems/0039-combination-sum) | Medium | Backtracking | ⬜ | ✅ | - |
 
 > ⬜ 미착수 / ❌ 해설 보고 이해 / 🟡 힌트 받고 해결 / ✅ 스스로 해결
 >
