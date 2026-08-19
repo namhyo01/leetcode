@@ -11,7 +11,7 @@
 - [ ] 19. Remove Nth Node From End of List (Medium)
 - [ ] 33. Search in Rotated Sorted Array (Medium)
 - [ ] 36. Valid Sudoku (Medium)
-- [ ] 39. Combination Sum (Medium)
+- [ ] 39. Combination Sum (Medium) ← **진행 중**
 - [ ] 46. Permutations (Medium)
 - [ ] 48. Rotate Image (Medium)
 - [ ] 49. Group Anagrams (Medium)
