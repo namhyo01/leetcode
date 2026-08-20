@@ -17,7 +17,32 @@ type TreeNode struct {
 // buildTree 는 preorder / inorder 순회 결과로부터 원래의 이진 트리를 복원한다.
 func buildTree(preorder []int, inorder []int) *TreeNode {
 	// TODO: 여기에 풀이를 작성하세요.
-	return nil
+	var build func(preStart, preEnd, inStart, inEnd int) *TreeNode
+	build = func(preStart, preEnd, inStart, inEnd int) *TreeNode {
+		if preStart > preEnd || inStart > inEnd {
+			return nil
+		}
+
+		rootVal := preorder[preStart]
+		root := &TreeNode{Val: rootVal}
+
+		inRootIndex := -1
+		for i := inStart; i <= inEnd; i++ {
+			if inorder[i] == rootVal {
+				inRootIndex = i
+				break
+			}
+		}
+
+		leftTreeSize := inRootIndex - inStart
+
+		root.Left = build(preStart+1, preStart+leftTreeSize, inStart, inRootIndex-1)
+		root.Right = build(preStart+leftTreeSize+1, preEnd, inRootIndex+1, inEnd)
+
+		return root
+	}
+
+	return build(0, len(preorder)-1, 0, len(inorder)-1)
 }
 
 // ── 아래는 놀이터용 출력 헬퍼. 풀이와 무관하니 신경 쓰지 않아도 된다. ──
