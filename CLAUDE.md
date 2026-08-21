@@ -6,8 +6,9 @@
 
 - 이직 준비 중. 예전에 알고리즘을 좀 했으나 감이 떨어진 상태에서 **재반복 복습** 중.
 - 목표 수준: 초중급~중급 (LeetCode Medium 중심).
-- 언어: **Go 단독.** (2026-08-19 결정 — 한 언어를 깊게 가기로 함. Python 은 만들지 않는다.)
-  예외: `problems/0015-3sum/` 에는 초기에 만든 Python 풀이가 남아 있다. 그대로 두되 새로 만들지 않는다.
+- 언어: **C++ 단독** (2026-08-21 결정). 새 문제는 `.cpp` 로만 만든다.
+  - 이전에 푼 Go 풀이 4개(15, 39, 105, 875)는 기록으로 **그대로 둔다.** 변환하지 않는다.
+  - 언어가 또 바뀌면 이 줄과 아래 디렉토리/관례 절을 같이 고칠 것.
 
 ## 진행 루프
 
@@ -58,24 +59,46 @@
 ```
 problems/<번호4자리>-<슬러그>/
 ├── README.md          # 영문 지문 + 제약조건 + 예제 + 한국어 회고
-├── solution.go        # Go 풀이 (package main + main() 놀이터)
-└── solution_test.go   # 표준 testing
+├── solution.cpp       # 풀이 (Solution 클래스 + #ifndef TESTING 놀이터)
+└── solution_test.cpp  # 테스트 (solution.cpp 를 include 하는 자체 러너)
 ```
+
+이전에 푼 Go 문제들은 `solution.go` / `solution_test.go` 로 남아 있다. 건드리지 않는다.
 
 ## 코드 관례
 
-- **각 문제 디렉토리를 `package main` + `main()` 놀이터로** 둔다.
-  `go run ./problems/<dir>/` 과 `go test ./problems/<dir>/` 이 **둘 다** 돼야 한다.
+- 표준은 **C++20** (`-std=c++20`). LeetCode 제출 형태에 맞춰 **`Solution` 클래스**에 메서드를 둔다.
+- `solution.cpp` 끝에 `#ifndef TESTING` 으로 감싼 `main()` 놀이터를 둔다.
   사용자는 출력을 찍어보며 실험하는 걸 선호한다.
-- 정렬은 `sort.Ints`가 아니라 `slices.Sort` (1.21+). 복사는 `slices.Clone`.
+- `solution_test.cpp` 는 맨 위에서 `#define TESTING` 후 `#include "solution.cpp"` 한다.
+  이러면 놀이터 `main()` 이 빠지고 테스트의 `main()` 만 남는다.
+- 시간을 재는 부분은 `#ifndef NO_TIMING` 으로 감싼다. 새니타이저 빌드에서 제외하기 위함이다.
+
+### 실행
+
+```bash
+make run   DIR=problems/<dir>   # 놀이터
+make test  DIR=problems/<dir>   # 전체 검증 (-O2, 성능 게이트 포함)
+make check DIR=problems/<dir>   # ASan/UBSan (성능 게이트 제외)
+```
+
+`DIR` 을 생략하면 가장 최근 문제 디렉토리를 쓴다.
+
+> **`make check` 를 꼭 같이 돌려본다.** C++ 의 배열 밖 접근은 `-O2` 에서 조용히 통과하는 일이
+> 흔하다. 실제로 `i + 2 < n` 을 `i <= n` 으로 바꾼 코드가 `make test` 는 전부 통과하고
+> `make check` 에서만 `heap-buffer-overflow` 로 잡혔다. 리뷰할 때 둘 다 확인한다.
 
 ## 테스트 하네스 요구사항
 
-표준 `testing` 만으로 (`go test ./problems/<dir>/`) 돌아야 하고, 항상 셋을 넣는다:
+외부 라이브러리 없이 (`make test`) 돌아야 하고, 항상 셋을 넣는다:
 
 1. LeetCode 예제 + 직접 만든 엣지 케이스
 2. **브루트포스와 대조하는 랜덤 테스트** (수백 건)
 3. **최대 입력 성능 체크** — 느린 풀이가 여기서 걸려야 한다
+
+> 성능 게이트의 임계값은 **추측하지 말고 실측으로 정한다.** 정답 풀이와 순진한 풀이를
+> 둘 다 재서, 그 사이에 넉넉한 간격을 두고 잡는다. (Go 에서 10초로 잡았다가 O(n^3) 풀이가
+> 1초에 끝나 게이트 구실을 못 한 적이 있다. C++ 은 더 빠르므로 더 조심할 것.)
 
 > 하네스에 넣는 기댓값은 **반드시 참조 구현으로 검증**한다. 손으로 계산한 값은 틀린다.
 > 참조 구현은 스크래치패드에서만 돌리고 **저장소에 남기지 않는다** (사용자가 답을 보게 된다).

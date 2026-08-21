@@ -1,6 +1,8 @@
 # LeetCode 코딩테스트 준비
 
-**Go** 로 푼다. 랜덤 출제 → 직접 풀이 → 리뷰 → 커밋 + 푸시.
+**C++** 로 푼다 (2026-08-21~). 랜덤 출제 → 직접 풀이 → 리뷰 → 커밋 + 푸시.
+
+> 15, 39, 105, 875 는 Go 로 푼 기록이다. 그대로 둔다.
 
 ## 진행 현황
 
@@ -20,13 +22,15 @@
 ## 실행 방법
 
 ```bash
-DIR=problems/0015-3sum   # 오늘 문제 (재풀이)
-
-go run  ./$DIR/                  # main() 놀이터, 출력 찍어보기
-go test ./$DIR/                  # 전체 검증
-go test -v ./$DIR/               # 케이스별 상세
-go test -bench=. -benchmem ./$DIR/   # 성능/할당 측정
+make run   DIR=problems/<dir>   # main() 놀이터, 출력 찍어보기
+make test  DIR=problems/<dir>   # 전체 검증 (-O2, 성능 게이트 포함)
+make check DIR=problems/<dir>   # ASan/UBSan 으로 메모리/UB 검사
 ```
+
+`DIR` 을 생략하면 가장 최근 문제 디렉토리를 쓴다.
+**`make test` 만 믿지 말고 `make check` 도 돌린다** — 배열 밖 접근은 `-O2` 에서 조용히 통과한다.
+
+Go 로 푼 기존 문제는 `go test ./problems/<dir>/`.
 
 ## 디렉토리 규칙
 
