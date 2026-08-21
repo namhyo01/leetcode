@@ -6,7 +6,7 @@
 
 | # | 문제 | 난이도 | 유형 | 결과 | 재풀이 |
 |---|------|--------|------|------|--------|
-| 15 | [3Sum](problems/0015-3sum) | Medium | Two Pointers | ❌ | **2026-08-21** |
+| 15 | [3Sum](problems/0015-3sum) | Medium | ❓ | 🔁 재풀이 중 | 2026-08-21 |
 | 875 | [Koko Eating Bananas](problems/0875-koko-eating-bananas) | Medium | Binary Search | ✅ | - |
 | 39 | [Combination Sum](problems/0039-combination-sum) | Medium | Backtracking | ✅ | - |
 | 105 | [Construct Binary Tree from Preorder and Inorder](problems/0105-construct-binary-tree-from-preorder-and-inorder-traversal) | Medium | Divide and Conquer | ✅ | - |
@@ -15,12 +15,12 @@
 >
 > 유형(❓)은 **푼 뒤에** 채운다. 미리 알면 스스로 판별하는 훈련이 안 된다.
 >
-> ❌는 재풀이 1순위. 3일 뒤 아무것도 안 보고 다시 친다.
+> ❌는 재풀이 1순위. 3일 뒤 아무것도 안 보고 다시 친다. 🔁 는 재풀이 진행 중.
 
 ## 실행 방법
 
 ```bash
-DIR=problems/0105-construct-binary-tree-from-preorder-and-inorder-traversal   # 오늘 문제
+DIR=problems/0015-3sum   # 오늘 문제 (재풀이)
 
 go run  ./$DIR/                  # main() 놀이터, 출력 찍어보기
 go test ./$DIR/                  # 전체 검증

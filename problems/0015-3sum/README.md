@@ -1,68 +1,64 @@
 # 15. 3Sum
 
-- 난이도: **Medium**
-- 유형: Two Pointers, Sorting
-- 링크: https://leetcode.com/problems/3sum/
+- Difficulty: **Medium**
+- Link: https://leetcode.com/problems/3sum/
 
-## 문제
+> **재풀이 문제.** 2026-08-18 에 스스로 풀지 못하고 해설을 봤다.
+> 이전 시도와 그때 적은 회고는 `git log -- problems/0015-3sum/` 에 남아 있으니
+> **다 풀기 전에는 열어보지 말 것.**
 
-정수 배열 `nums`가 주어진다. `i != j`, `i != k`, `j != k` 이면서
-`nums[i] + nums[j] + nums[k] == 0` 인 모든 삼중항(triplet)을 반환하라.
+## Problem
 
-**답에 중복된 삼중항이 포함되어서는 안 된다.**
-(반환하는 삼중항의 순서, 삼중항 내부 원소의 순서는 상관없다.)
+Given an integer array `nums`, return all the triplets `[nums[i], nums[j], nums[k]]`
+such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.
 
-## 제약 조건
+Notice that the solution set must not contain **duplicate triplets**.
 
-- `3 <= nums.length <= 3000`
-- `-10^5 <= nums[i] <= 10^5`
-
-## 예제
+## Examples
 
 ```
-입력: nums = [-1,0,1,2,-1,-4]
-출력: [[-1,-1,2],[-1,0,1]]
-설명:
-  nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0
-  nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0
-  nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0
-  서로 다른 삼중항은 [-1,0,1] 과 [-1,-1,2].
+Example 1:
+Input:  nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation:
+  nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+  nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+  nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+  The distinct triplets are [-1,0,1] and [-1,-1,2].
+  Notice that the order of the output and the order of the triplets does not matter.
 
-입력: nums = [0,1,1]
-출력: []
-설명: 합이 0인 삼중항이 없다.
+Example 2:
+Input:  nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
 
-입력: nums = [0,0,0]
-출력: [[0,0,0]]
-설명: 유일한 삼중항의 합은 0이다.
+Example 3:
+Input:  nums = [0,0,0]
+Output: [[0,0,0]]
+Explanation: The only possible triplet sums up to 0.
 ```
 
-## 스스로 체크할 것
+## Constraints
 
-- [ ] 브루트포스 O(n³) 말고 더 빠르게 할 수 있나?
-- [ ] **중복 제거**를 `set`으로 후처리하지 않고 루프 안에서 처리할 수 있나?
+```
+3 <= nums.length <= 3000
+-10^5 <= nums[i] <= 10^5
+```
+
+## Questions to sit with
+
+- [ ] 세 수를 전부 훑으면 복잡도가 얼마인가? `n = 3000` 에서 통과하나?
+- [ ] 세 수 중 **하나를 고정**하면 남는 문제는 무엇이 되나? 그 문제는 얼마에 풀리나?
+- [ ] 출력의 순서가 상관없다고 했다. 이 조건에서 공짜로 얻을 수 있는 게 있나?
+- [ ] 중복 삼중항을 **만들어놓고 걸러내는** 대신, 애초에 안 만들 방법이 있나?
+- [ ] 중복이 생길 수 있는 자리는 몇 군데인가?
 - [ ] 내 풀이의 시간/공간 복잡도는?
-- [ ] `n = 3000` 일 때 통과하나?
 
-## 내 접근 (2026-08-18, ❌ **실패 — 해설 봄**)
+## 내 접근 (풀면서 채우기)
 
-> 스스로 풀지 못했다. 아래는 해설을 보고 정리한 내용이므로 **내 실력이 아니다.**
-> 2026-08-21에 이 파일을 열지 말고 백지에서 다시 칠 것.
-
-
-- **처음 떠올린 방법:** 슬라이딩 윈도우 / DP를 의심했으나 둘 다 아님.
-  - 슬라이딩 윈도우는 답이 **연속 구간**일 때만. 3Sum의 답은 인덱스가 흩어져 있고 순서도 무관 → ❌
-  - DP는 부분문제가 **중복 재사용**될 때만. "n개 중 3개 고르기"는 겹치는 부분문제가 없음 → ❌
-- **막힌 지점:** 복잡도 계산. 안쪽 Two Sum을 브루트포스로 보면 O(n³)이라 개선이 없다고 판단했는데,
-  **Two Sum 자체가 O(n)** 이라는 걸 놓쳤다.
-- **최종 아이디어:** 정렬 후 첫 수 `a`를 고정 → 남은 구간에서 합이 `-a`인 두 수를 **투 포인터**로 O(n) 탐색.
-  - `sum < 0` → `l++` (가장 큰 짝과 붙여도 모자라니 `nums[l]`은 가망 없음 = 버려도 안전)
-  - `sum > 0` → `r--`
-  - 중복 제거 2곳: ① 고정값이 직전과 같으면 스킵 ② 정답 기록 후 `l`이 직전과 같은 동안 전진
-  - 조기 종료: `nums[i] > 0`이면 뒤는 전부 양수 → `break`
-- **시간복잡도:** O(n²) / **공간복잡도:** O(1) (정렬 제자리, 출력 제외)
-
-### 다시 볼 것
-
-- 중복 제거를 `set` 후처리 없이 루프 안에서 처리하는 패턴 (면접 감점 포인트)
-- `r` 쪽 중복은 왜 따로 안 건드려도 되는가 → `a`와 `l`이 정해지면 `r`은 자동으로 하나로 결정됨
+<!--
+- 지난번에 막힌 지점을 기억하는가:
+- 이번엔 어디까지 스스로 갔는가:
+- 최종 아이디어:
+- 시간복잡도:      / 공간복잡도:
+-->
