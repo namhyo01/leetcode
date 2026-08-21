@@ -6,7 +6,7 @@
 
 | # | 문제 | 난이도 | 유형 | 결과 | 재풀이 |
 |---|------|--------|------|------|--------|
-| 15 | [3Sum](problems/0015-3sum) | Medium | ❓ | 🔁 재풀이 중 | 2026-08-21 |
+| 15 | [3Sum](problems/0015-3sum) | Medium | Two Pointers | ❌ → ✅ | 완료 (08-18 ❌ → 08-21 ✅) |
 | 875 | [Koko Eating Bananas](problems/0875-koko-eating-bananas) | Medium | Binary Search | ✅ | - |
 | 39 | [Combination Sum](problems/0039-combination-sum) | Medium | Backtracking | ✅ | - |
 | 105 | [Construct Binary Tree from Preorder and Inorder](problems/0105-construct-binary-tree-from-preorder-and-inorder-traversal) | Medium | Divide and Conquer | ✅ | - |

@@ -7,7 +7,7 @@
 - [ ] 3. Longest Substring Without Repeating Characters (Medium)
 - [ ] 5. Longest Palindromic Substring (Medium)
 - [ ] 11. Container With Most Water (Medium)
-- [x] 15. 3Sum (Medium) — ❌ **해설 봄**, 재풀이 2026-08-21
+- [x] 15. 3Sum (Medium) — 08-18 ❌ 해설 봄 → 08-21 ✅ 재풀이 성공
 - [ ] 19. Remove Nth Node From End of List (Medium)
 - [ ] 33. Search in Rotated Sorted Array (Medium)
 - [ ] 36. Valid Sudoku (Medium)
