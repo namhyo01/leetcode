@@ -17,3 +17,8 @@ venv/
 *.out
 a.out
 play
+problems/*/a
+problems/*/*.bin
+
+# 미리 컴파일된 헤더 (make pch)
+.pch/

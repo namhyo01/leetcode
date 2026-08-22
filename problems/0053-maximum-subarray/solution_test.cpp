@@ -1,13 +1,9 @@
 // 53. Maximum Subarray 테스트 — 외부 라이브러리 없이 g++ 만으로 돈다.
 //   make test  DIR=problems/0053-maximum-subarray   (-O2, 성능 게이트 포함)
 //   make check DIR=problems/0053-maximum-subarray   (ASan/UBSan, 성능 게이트 제외)
+#include <bits/stdc++.h>   // 첫 줄이어야 미리 컴파일된 헤더(make pch)가 쓰인다
 #define TESTING
 #include "solution.cpp"
-
-#include <chrono>
-#include <iostream>
-#include <random>
-#include <string>
 
 static int failed = 0;
 

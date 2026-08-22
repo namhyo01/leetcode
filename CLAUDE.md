@@ -86,6 +86,8 @@ problems/<번호4자리>-<슬러그>/
 ## 코드 관례
 
 - 표준은 **C++20** (`-std=c++20`). LeetCode 제출 형태에 맞춰 **`Solution` 클래스**에 메서드를 둔다.
+- 헤더는 `#include <bits/stdc++.h>` 하나로 쓴다. **파일의 첫 줄**이어야 한다
+  (`make pch` 로 만든 미리 컴파일된 헤더가 그때만 적용된다). GCC 전용이지만 LeetCode 도 g++ 다.
 - `solution.cpp` 끝에 `#ifndef TESTING` 으로 감싼 `main()` 놀이터를 둔다.
   사용자는 출력을 찍어보며 실험하는 걸 선호한다.
 - `solution_test.cpp` 는 맨 위에서 `#define TESTING` 후 `#include "solution.cpp"` 한다.
@@ -101,6 +103,10 @@ make check DIR=problems/<dir>   # ASan/UBSan (성능 게이트 제외)
 ```
 
 `DIR` 을 생략하면 가장 최근 문제 디렉토리를 쓴다.
+
+`bits/stdc++.h` 는 편한 대신 컴파일이 두 배 느려진다(1.45초 → 0.61초 차이).
+`make pch` 를 한 번 돌려두면 되돌아온다. 선택 사항이고, 안 만들어도 그냥 동작한다.
+`.pch/` 는 약 270MB 이고 gitignore 돼 있다. `make clean` 으로 지운다.
 
 > **`make check` 를 꼭 같이 돌려본다.** C++ 의 배열 밖 접근은 `-O2` 에서 조용히 통과하는 일이
 > 흔하다. 실제로 `i + 2 < n` 을 `i <= n` 으로 바꾼 코드가 `make test` 는 전부 통과하고
