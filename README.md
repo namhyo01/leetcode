@@ -12,7 +12,7 @@
 | 875 | [Koko Eating Bananas](problems/0875-koko-eating-bananas) | Medium | Binary Search | ✅ | - |
 | 39 | [Combination Sum](problems/0039-combination-sum) | Medium | Backtracking | ✅ | - |
 | 105 | [Construct Binary Tree from Preorder and Inorder](problems/0105-construct-binary-tree-from-preorder-and-inorder-traversal) | Medium | Divide and Conquer | ✅ | - |
-| 53 | [Maximum Subarray](problems/0053-maximum-subarray) | Medium | ❓ | ⬜ | - |
+| 53 | [Maximum Subarray](problems/0053-maximum-subarray) | Medium | DP (Kadane) | ✅ | - |
 
 > ⬜ 미착수 / ❌ 해설 보고 이해 / 🟡 힌트 받고 해결 / ✅ 스스로 해결
 >
