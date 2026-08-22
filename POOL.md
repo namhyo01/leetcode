@@ -15,7 +15,7 @@
 - [ ] 46. Permutations (Medium)
 - [ ] 48. Rotate Image (Medium)
 - [ ] 49. Group Anagrams (Medium)
-- [ ] 53. Maximum Subarray (Medium)
+- [ ] 53. Maximum Subarray (Medium) ← **진행 중**
 - [ ] 54. Spiral Matrix (Medium)
 - [ ] 55. Jump Game (Medium)
 - [ ] 56. Merge Intervals (Medium)
