@@ -38,6 +38,12 @@ description: 오늘 푼 문제를 검증·리뷰하고, 기록을 갱신하고, 
 8. `_posts/YYYY-MM-DD-leetcode-<번호>-<슬러그>.md` 로 만든다.
    날짜는 **푼 날**. 파일명 날짜와 frontmatter `date` 가 어긋나면 Jekyll 이 다른 날짜로 처리한다.
 
+   > **`date` 의 시각을 미래로 적지 않는다.** `_config.yml` 에 `future` 설정이 없어
+   > 기본값 `false` 이므로, 빌드 시점보다 나중인 글은 **조용히 통째로 빠진다.**
+   > 에러도 경고도 없고 htmlproofer 도 통과해서 알아채기 어렵다.
+   > `date +%H:%M` 으로 현재 시각을 확인하고 그보다 이르게 적는다.
+   > 빌드 후 `_site/posts/<슬러그>/` 가 실제로 생겼는지 확인하면 확실하다.
+
    ```yaml
    ---
    title: "[LeetCode] 53. Maximum Subarray"
