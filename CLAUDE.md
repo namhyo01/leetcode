@@ -96,6 +96,9 @@ problems/<번호4자리>-<슬러그>/
 - `solution_test.cpp` 는 맨 위에서 `#define TESTING` 후 `#include "solution.cpp"` 한다.
   이러면 놀이터 `main()` 이 빠지고 테스트의 `main()` 만 남는다.
 - 시간을 재는 부분은 `#ifndef NO_TIMING` 으로 감싼다. 새니타이저 빌드에서 제외하기 위함이다.
+  **대신 `#ifdef NO_TIMING` 쪽에 "성능 체크 생략됨" 안내를 반드시 찍는다.**
+  안 그러면 `make check` 가 성능 게이트를 건너뛰고도 "전체 통과" 라고 말해서
+  느린 풀이가 통과한 것처럼 보인다 (실제로 153 에서 혼란을 일으켰다).
 
 ### 실행
 

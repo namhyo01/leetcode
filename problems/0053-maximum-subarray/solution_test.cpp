@@ -136,6 +136,10 @@ int main() {
         }
     }
 #endif
+#ifdef NO_TIMING
+    cout << "· 성능 체크는 이 빌드에서 생략됨 (새니타이저는 느려서 측정이 무의미하다)\n"
+            "  복잡도 확인은 `make test` 로 해야 한다\n";
+#endif
 
     cout << "\n" << (failed ? "실패 " + to_string(failed) + "건" : "전체 통과 🎉") << "\n";
     return failed ? 1 : 0;

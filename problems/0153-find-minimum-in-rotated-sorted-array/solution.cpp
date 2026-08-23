@@ -7,7 +7,7 @@ class Solution {
 public:
     int findMin(vector<int>& nums) {
         // TODO: 여기에 풀이를 작성하세요.
-        return 0;
+        return *min_element(nums.begin(), nums.end());
     }
 };
 
