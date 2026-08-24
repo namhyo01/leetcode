@@ -22,7 +22,7 @@
 - [ ] 57. Insert Interval (Medium)
 - [ ] 74. Search a 2D Matrix (Medium)
 - [ ] 78. Subsets (Medium)
-- [ ] 79. Word Search (Medium) ← **진행 중**
+- [x] 79. Word Search (Medium) — ✅ 스스로 해결
 - [ ] 98. Validate Binary Search Tree (Medium)
 - [ ] 102. Binary Tree Level Order Traversal (Medium)
 - [x] 105. Construct Binary Tree from Preorder and Inorder (Medium) — ✅ 스스로 해결

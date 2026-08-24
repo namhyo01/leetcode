@@ -6,6 +6,31 @@ class Solution {
 public:
     bool exist(vector<vector<char>>& board, string word) {
         // TODO: 여기에 풀이를 작성하세요.
+        int dy[4] = {-1, 0, 1, 0};
+        int dx[4] = {0, 1, 0, -1};
+        function<bool(int,int,int)> dfs = [&](int y, int x, int idx) {
+            if (idx == word.size()) return true;
+            if (y < 0 || y >= board.size() || x < 0 || x >= board[0].size()) return false;
+            if (board[y][x] != word[idx]) return false;
+
+            char temp = board[y][x]; // 현재 위치의 문자를 저장
+            board[y][x] = '#'; // 방문 표시
+            for (int i = 0; i < 4; ++i) {
+                if (dfs(y + dy[i], x + dx[i], idx + 1)) {
+                    board[y][x] = temp; // 복원
+                    return true;
+                }
+            }
+            board[y][x] = temp; // 복원
+            return false;
+        };
+        for (int i = 0; i < board.size(); ++i) {
+            for (int j = 0; j < board[0].size(); ++j) {
+                if (dfs(i, j, 0)) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 };
