@@ -37,7 +37,7 @@
 - [ ] 167. Two Sum II (Medium)
 - [ ] 198. House Robber (Medium)
 - [ ] 200. Number of Islands (Medium)
-- [ ] 207. Course Schedule (Medium)
+- [ ] 207. Course Schedule (Medium) ← **진행 중**
 - [ ] 215. Kth Largest Element in an Array (Medium)
 - [ ] 230. Kth Smallest Element in a BST (Medium)
 - [ ] 238. Product of Array Except Self (Medium)
