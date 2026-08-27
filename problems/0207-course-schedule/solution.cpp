@@ -6,7 +6,35 @@ class Solution {
 public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         // TODO: 여기에 풀이를 작성하세요.
-        return false;
+        vector<vector<int>> graph(numCourses);
+        vector<int> indegree(numCourses, 0); // 각 노드의 진입 차수
+for (const auto& p : prerequisites) {
+            graph[p[1]].push_back(p[0]);
+            indegree[p[0]]++;
+        }
+
+
+
+        
+        queue<int> q;
+        for (int i = 0; i < numCourses; ++i) {
+            if (indegree[i] == 0) {
+                q.push(i);
+            }
+        }
+        int count = 0;
+        while (!q.empty()) {
+            int course = q.front();
+            q.pop();
+            count++;
+            for (int nextCourse : graph[course]) {
+                indegree[nextCourse]--;
+                if (indegree[nextCourse] == 0) {
+                    q.push(nextCourse);
+                }
+            }
+        }
+        return count == numCourses;
     }
 };
 
