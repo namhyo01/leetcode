@@ -6,7 +6,42 @@ class Solution {
 public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
         // TODO: 여기에 풀이를 작성하세요.
-        return {};
+        int ns = newInterval[0], ne = newInterval[1];
+        int new_insert = 0;
+        vector<vector<int>> res;
+        for (int i = 0; i < intervals.size(); i++){
+            int s = intervals[i][0], e = intervals[i][1];
+            vector<int> new_interval;
+            if (e < ns) {
+                res.push_back({s, e});
+                continue;
+            }
+            if (s <= ns && e >= ns) {
+                ns = min(ns, s); // ns 갱신
+                ne = max(ne, e);
+                new_insert = 1;
+                continue;
+            }
+
+            if (new_insert != 2 && s <= ne) {
+                ns = min(ns, s); // ns 갱신
+                ne = max(ne, e);
+                continue;
+            }
+
+            if (s > ne) {
+                if (new_insert != 2) {
+                    res.push_back({ns, ne});
+                    new_insert = 2;
+                }
+                res.push_back({s, e});
+                continue;
+            }
+        }
+        if (new_insert != 2) {
+            res.push_back({ns, ne});
+        }
+        return res;
     }
 };
 

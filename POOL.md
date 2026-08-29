@@ -19,7 +19,7 @@
 - [ ] 54. Spiral Matrix (Medium)
 - [ ] 55. Jump Game (Medium)
 - [ ] 56. Merge Intervals (Medium)
-- [ ] 57. Insert Interval (Medium) ← **진행 중**
+- [x] 57. Insert Interval (Medium) — ✅ 스스로 해결
 - [ ] 74. Search a 2D Matrix (Medium)
 - [ ] 78. Subsets (Medium)
 - [x] 79. Word Search (Medium) — ✅ 스스로 해결
