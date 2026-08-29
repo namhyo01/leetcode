@@ -16,7 +16,7 @@
 | 153 | [Find Minimum in Rotated Sorted Array](problems/0153-find-minimum-in-rotated-sorted-array) | Medium | Binary Search | ✅ | - |
 | 79 | [Word Search](problems/0079-word-search) | Medium | Backtracking | ✅ | - |
 | 207 | [Course Schedule](problems/0207-course-schedule) | Medium | Topological Sort | ✅ | - |
-| 210 | [Course Schedule II](problems/0210-course-schedule-ii) | Medium | Topological Sort | ⬜ | - |
+| 210 | [Course Schedule II](problems/0210-course-schedule-ii) | Medium | Topological Sort | ✅ | - |
 
 > ⬜ 미착수 / ❌ 해설 보고 이해 / 🟡 힌트 받고 해결 / ✅ 스스로 해결
 >

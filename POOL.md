@@ -38,7 +38,7 @@
 - [ ] 198. House Robber (Medium)
 - [ ] 200. Number of Islands (Medium)
 - [x] 207. Course Schedule (Medium) — ✅ 스스로 해결
-- [ ] 210. Course Schedule II (Medium) ← **진행 중** (207 후속, 직접 요청)
+- [x] 210. Course Schedule II (Medium) — ✅ 스스로 해결 (207 후속)
 - [ ] 215. Kth Largest Element in an Array (Medium)
 - [ ] 230. Kth Smallest Element in a BST (Medium)
 - [ ] 238. Product of Array Except Self (Medium)

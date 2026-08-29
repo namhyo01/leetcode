@@ -6,6 +6,37 @@ class Solution {
 public:
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
         // TODO: 여기에 풀이를 작성하세요.
+        vector<vector<int>> graph(numCourses);
+        vector<int> indegree(numCourses, 0); // 각 노드의 진입
+
+        for (const auto& p : prerequisites) {
+            graph[p[1]].push_back(p[0]);
+            indegree[p[0]]++; // 진입 차수 증가
+        }
+
+        queue<int> q;
+        for (int i=0;i<numCourses;i++){
+            if (indegree[i] == 0) { // 진입 된 적이 없는 애들은 따로 빼기
+                q.push(i); // q에 추가
+            }
+        }
+        int cnt = 0;
+        vector<int> res;
+        while (!q.empty()){
+            int course = q.front();
+            q.pop();
+            res.push_back(course);
+            cnt++;
+            for (int i : graph[course]){
+                indegree[i]--;
+                if (indegree[i] == 0){
+                    q.push(i);
+                }
+            }
+        }
+        if (numCourses == cnt) {
+            return res;
+        }
         return {};
     }
 };
