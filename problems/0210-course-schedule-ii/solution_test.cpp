@@ -26,21 +26,27 @@ static string showPre(const vector<vector<int>>& p, size_t limit = 10) {
     return s + "]";
 }
 
-// 완주 가능한지만 판정하는 참조 구현 (207 과 같은 방식)
-static bool feasible(int n, const vector<vector<int>>& pre) {
-    vector<vector<int>> g(n); vector<int> indeg(n, 0);
-    for (auto& p : pre) { g[p[1]].push_back(p[0]); indeg[p[0]]++; }
-    queue<int> q;
-    for (int i = 0; i < n; i++) if (!indeg[i]) q.push(i);
-    int cnt = 0;
-    while (!q.empty()) { int u = q.front(); q.pop(); cnt++;
-        for (int v : g[u]) if (--indeg[v] == 0) q.push(v); }
-    return cnt == n;
+// 참조 구현: 도달 가능성 행렬을 채워서 자기 자신으로 돌아오는 정점이 있는지 본다.
+// 위상정렬과 구조가 전혀 다르므로 풀이의 힌트가 되지 않는다. 작은 n 전용 (O(n^3)).
+static bool hasCycle(int n, const vector<vector<int>>& pre) {
+    vector<vector<char>> reach(n, vector<char>(n, 0));
+    for (auto& p : pre) reach[p[1]][p[0]] = 1;          // b -> a
+    for (int k = 0; k < n; k++)
+        for (int i = 0; i < n; i++)
+            if (reach[i][k])
+                for (int j = 0; j < n; j++)
+                    if (reach[k][j]) reach[i][j] = 1;
+    for (int i = 0; i < n; i++) if (reach[i][i]) return true;
+    return false;
 }
 
 // 돌려받은 순서가 유효한 위상정렬인지 검사한다. 문제가 있으면 사유를 돌려준다.
-static string validate(int n, const vector<vector<int>>& pre, const vector<int>& order) {
-    if (!feasible(n, pre))
+// possible: 완주 가능 여부를 이미 알고 있으면 넘긴다 (-1 이면 여기서 판정).
+// 큰 입력에서는 O(n^3) 판정을 돌릴 수 없으므로 생성 방식으로 아는 값을 넘긴다.
+static string validate(int n, const vector<vector<int>>& pre, const vector<int>& order,
+                       int possible = -1) {
+    bool can = (possible >= 0) ? (bool)possible : !hasCycle(n, pre);
+    if (!can)
         return order.empty() ? "" : "완주 불가능한데 빈 배열이 아니다";
 
     if ((int)order.size() != n)
@@ -173,7 +179,7 @@ int main() {
         auto el = chrono::duration_cast<chrono::milliseconds>(
                       chrono::steady_clock::now() - st).count();
 
-        string err = validate(n, pre, got);
+        string err = validate(n, pre, got, 1);   // 사이클 없게 만들었다
         if (!err.empty()) {
             cout << "✗ 대규모 입력 실패 (n=" << n << ", 간선 " << pre.size() << "): " << err << "\n";
             failed++;

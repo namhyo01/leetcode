@@ -1,0 +1,16 @@
+{
+  "editor.wordBasedSuggestions": "currentDocument",
+  "editor.inlineSuggest.enabled": false,
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  },
+  "editor.acceptSuggestionOnEnter": "off",
+  "C_Cpp.default.cppStandard": "c++20",
+  "C_Cpp.default.compilerPath": "/usr/bin/g++",
+  "files.associations": {
+    "*.cpp": "cpp"
+  },
+  "C_Cpp_Runner.msvcBatchPath": ""
+}

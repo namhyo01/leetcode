@@ -17,19 +17,18 @@ static string show(const vector<vector<int>>& pre, size_t limit = 10) {
     return s + "]";
 }
 
-// 참조 구현: 선수과목이 없는 과목부터 하나씩 걷어내고, 전부 걷히는지 본다.
-static bool reference(int n, const vector<vector<int>>& pre) {
-    vector<vector<int>> adj(n);
-    vector<int> indeg(n, 0);
-    for (auto& p : pre) { adj[p[1]].push_back(p[0]); indeg[p[0]]++; }
-    queue<int> q;
-    for (int i = 0; i < n; i++) if (indeg[i] == 0) q.push(i);
-    int done = 0;
-    while (!q.empty()) {
-        int u = q.front(); q.pop(); done++;
-        for (int v : adj[u]) if (--indeg[v] == 0) q.push(v);
-    }
-    return done == n;
+// 참조 구현: 도달 가능성 행렬을 채워서 자기 자신으로 돌아오는 정점이 있는지 본다.
+// 위상정렬과 구조가 전혀 다르므로 풀이의 힌트가 되지 않는다. 작은 n 전용 (O(n^3)).
+static bool hasCycle(int n, const vector<vector<int>>& pre) {
+    vector<vector<char>> reach(n, vector<char>(n, 0));
+    for (auto& p : pre) reach[p[1]][p[0]] = 1;          // b -> a
+    for (int k = 0; k < n; k++)
+        for (int i = 0; i < n; i++)
+            if (reach[i][k])
+                for (int j = 0; j < n; j++)
+                    if (reach[k][j]) reach[i][j] = 1;
+    for (int i = 0; i < n; i++) if (reach[i][i]) return true;
+    return false;
 }
 
 static void expectEq(int n, vector<vector<int>> pre, bool want, const string& label) {
@@ -76,7 +75,7 @@ int main() {
             }
             vector<vector<int>> copy = pre;
             bool got = sol.canFinish(n, copy);
-            bool want = reference(n, pre);
+            bool want = !hasCycle(n, pre);
             if (got != want) {
                 cout << "✗ 랜덤 불일치 n=" << n << " pre=" << show(pre)
                      << "\n    기대: " << boolalpha << want << "\n    실제: " << got << "\n";
@@ -146,7 +145,7 @@ int main() {
                     failed++; ok = false; break;
                 }
             if (!ok) break;
-            if (reference(n, pre)) {
+            if (!hasCycle(n, pre)) {
                 cout << "✗ 테스트 생성기 오류: 사이클을 심었는데 참조가 true n=" << n
                      << " pre=" << show(pre) << "\n";
                 failed++; ok = false; break;
