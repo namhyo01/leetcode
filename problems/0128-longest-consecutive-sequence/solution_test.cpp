@@ -137,6 +137,39 @@ int main() {
             cout << "✓ 성능 n=" << n << " " << el << "ms (전체가 하나의 수열)\n";
         }
     }
+
+    // 5) 중복이 많은 최악 케이스
+    //    같은 값이 수만 번 반복되는데 그 값이 긴 수열의 시작점이면,
+    //    **원본 배열을 순회하는 풀이**는 같은 수열을 중복 횟수만큼 다시 걷는다.
+    //    실측 (n=10^5, 값 1 이 5만 번 + 2..50000):
+    //      집합을 순회하는 풀이      2ms
+    //      원본 배열을 순회하는 풀이 5,501ms
+    //    200ms 로 잡는다.
+    {
+        const int half = 50000;
+        vector<int> a;
+        a.reserve(half * 2);
+        for (int i = 0; i < half; i++) a.push_back(1);          // 같은 값이 5만 번
+        for (int v = 2; v <= half; v++) a.push_back(v);         // 그 값에서 시작하는 긴 수열
+
+        Solution sol;
+        vector<int> copy = a;
+        auto st = chrono::steady_clock::now();
+        int got = sol.longestConsecutive(copy);
+        auto el = chrono::duration_cast<chrono::milliseconds>(
+                      chrono::steady_clock::now() - st).count();
+
+        if (got != half) {
+            cout << "✗ 중복 많은 케이스 답이 틀림 — 기대 " << half << ", 실제 " << got << "\n";
+            failed++;
+        } else if (el > 200) {
+            cout << "✗ 중복 많은 케이스가 " << el << "ms — 너무 느림 "
+                    "(같은 값을 만날 때마다 수열을 다시 걷고 있을 가능성)\n";
+            failed++;
+        } else {
+            cout << "✓ 중복 많은 케이스 " << el << "ms (같은 값 " << half << "번 반복)\n";
+        }
+    }
 #endif
 #ifdef NO_TIMING
     cout << "· 성능 체크는 이 빌드에서 생략됨 (새니타이저는 느려서 측정이 무의미하다)\n"

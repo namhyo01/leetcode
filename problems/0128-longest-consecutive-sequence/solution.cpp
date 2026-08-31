@@ -7,7 +7,25 @@ class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
         // TODO: 여기에 풀이를 작성하세요.
-        return 0;
+        unordered_set<int> um;
+        int max_length = 0;
+
+        for (const auto &num : nums ){
+            um.insert(num);
+        }
+
+        for (const auto &num : um){
+            if (!um.contains(num-1)) { // 이전 값이 없는가
+                int current = num;
+                int current_length = 1;
+                while (um.contains(current+1)){ // 다음 값이 존재하면
+                    current++;
+                    current_length++;
+                }
+                max_length = max(max_length, current_length);
+            }
+        }
+        return max_length;
     }
 };
 
