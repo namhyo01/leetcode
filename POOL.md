@@ -26,7 +26,7 @@
 - [ ] 98. Validate Binary Search Tree (Medium)
 - [ ] 102. Binary Tree Level Order Traversal (Medium)
 - [x] 105. Construct Binary Tree from Preorder and Inorder (Medium) — ✅ 스스로 해결
-- [ ] 128. Longest Consecutive Sequence (Medium)
+- [ ] 128. Longest Consecutive Sequence (Medium) ← **진행 중**
 - [ ] 133. Clone Graph (Medium)
 - [ ] 138. Copy List with Random Pointer (Medium)
 - [ ] 139. Word Break (Medium)

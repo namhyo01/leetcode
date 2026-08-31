@@ -18,6 +18,7 @@
 | 207 | [Course Schedule](problems/0207-course-schedule) | Medium | Topological Sort | ✅ | - |
 | 210 | [Course Schedule II](problems/0210-course-schedule-ii) | Medium | Topological Sort | ✅ | - |
 | 57 | [Insert Interval](problems/0057-insert-interval) | Medium | 구현 (Intervals) | ✅ | - |
+| 128 | [Longest Consecutive Sequence](problems/0128-longest-consecutive-sequence) | Medium | ❓ | ⬜ | - |
 
 > ⬜ 미착수 / ❌ 해설 보고 이해 / 🟡 힌트 받고 해결 / ✅ 스스로 해결
 >
