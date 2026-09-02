@@ -33,7 +33,7 @@
 - [ ] 143. Reorder List (Medium)
 - [ ] 150. Evaluate Reverse Polish Notation (Medium)
 - [x] 153. Find Minimum in Rotated Sorted Array (Medium) — ✅ 스스로 해결
-- [ ] 155. Min Stack (Medium)
+- [ ] 155. Min Stack (Medium) ← **진행 중**
 - [ ] 167. Two Sum II (Medium)
 - [ ] 198. House Robber (Medium)
 - [ ] 200. Number of Islands (Medium)
